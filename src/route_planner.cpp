@@ -51,7 +51,7 @@ RouteModel::Node *RoutePlanner::NextNode() {
     sort(open_list.begin(), open_list.end(),
          [](auto &first, auto &second)
                     {return (first->g_value + first->h_value)
-                             < (second->g_value + second->h_value);});
+                             > (second->g_value + second->h_value);});
     auto next_node = open_list.back();
     open_list.pop_back();
     return next_node;
