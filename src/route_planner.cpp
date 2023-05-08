@@ -48,16 +48,12 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
-    RouteModel::Node *next_node = nullptr;
-    float min_fScore = std::numeric_limits<float>::max();
-
-    for(auto &node:open_list){
-        float fScore = node->g_value + node->h_value;
-        if(fScore < min_fScore){
-            next_node = node;
-            min_fScore = fScore;
-        }
-    }
+    sort(open_list.begin(), open_list.end(),
+         [](auto &first, auto &second)
+                    {return (first->g_value + first->h_value)
+                             < (second->g_value + second->h_value);});
+    auto next_node = open_list.back();
+    open_list.pop_back();
     return next_node;
 }
 
