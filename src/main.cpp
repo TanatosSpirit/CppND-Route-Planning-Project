@@ -55,9 +55,9 @@ int main(int argc, const char **argv)
     // RoutePlanner object below in place of 10, 10, 90, 90.
     float start_x{}, start_y{}, end_x{}, end_y{};
 
-    std::cout << "Start point x and y: ";
+    std::cout << "Enter Start point x and y separated by space. \nValue in range [0...100]: ";
     std::cin >> start_x >> start_y;
-    std::cout << "End point x and y: ";
+    std::cout << "Enter End point x and y separated by space. \nValue in range [0...100]: ";
     std::cin >> end_x >> end_y;
 
     // Build Model.
